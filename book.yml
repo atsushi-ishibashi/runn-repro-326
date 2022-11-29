@@ -1,0 +1,13 @@
+desc: Open Account
+runners:
+  amreq: http://localhost:8080
+steps:
+  dummyimage:
+    amreq:
+      /upload:
+        post:
+          body:
+            multipart/form-data:
+              files: ./dummy.png
+    test: |
+      steps.dummyimage.res.status == 200
