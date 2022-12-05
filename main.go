@@ -36,6 +36,12 @@ func main() {
 		return
 	}
 
+	e := InitEcho()
+
+	log.Fatalln(e.Start(":" + *port))
+}
+
+func InitEcho() *echo.Echo {
 	e := echo.New()
 	e.HideBanner = true
 	e.HidePort = true
@@ -85,7 +91,7 @@ func main() {
 
 	e.POST("/upload", Upload)
 
-	log.Fatalln(e.Start(":" + *port))
+	return e
 }
 
 type UploadInput struct {
